@@ -6,11 +6,10 @@ import (
 )
 
 // ^> 表示非大于号
-const cityListReg = `<a href="(http://www.zhenai.com/zhenghun/[a][a-z0-9]+)"[^>]+>([^<]+)</a>`
+var cityListReg = regexp.MustCompile(`<a href="(http://www.zhenai.com/zhenghun/[a-b][a-z0-9]+)"[^>]+>([^<]+)</a>`)
 
 func ParseCityList(contents []byte) engine.ParserResult {
-	re := regexp.MustCompile(cityListReg)
-	matches := re.FindAllSubmatch(contents, -1)
+	matches := cityListReg.FindAllSubmatch(contents, -1)
 
 	result := engine.ParserResult{}
 	for _, m := range matches {

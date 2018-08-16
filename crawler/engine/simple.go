@@ -10,7 +10,7 @@ type SimpleEngine struct {
 }
 
 func worker(r Request) (ParserResult, error) {
-	fmt.Printf("fetching url : %s\n", r.Url)
+	//fmt.Printf("fetching url : %s\n", r.Url)
 
 	contents, e := fetcher.Fetch(r.Url)
 	if e != nil {
